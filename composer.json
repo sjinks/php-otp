@@ -1,0 +1,25 @@
+{
+	"name" : "wildwolf/php-otp",
+	"description" : "Simple HOTP/TOTP generation library",
+	"keywords" : ["security", "otp", "hotp", "totp"],
+	"license" : "MIT",
+	"homepage" : "https://github.com/sjinks/wp-two-factor-auth",
+	"authors" : [
+		{
+			"name" : "Volodymyr Kolesnykov",
+			"email" : "volodymyr@wildwolf.name",
+			"role" : "Developer"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"WildWolf\\": "src/"
+		}
+	},
+	"require" : {
+		"php" : ">=7.0.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^7.0"
+	}
+}
