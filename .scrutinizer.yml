@@ -1,0 +1,16 @@
+checks:
+  php:
+    code_rating: true
+    duplication: true
+
+filter:
+  excluded_paths: [tests/*]
+
+build:
+  tests:
+    override:
+      -
+        command: 'vendor/bin/phpunit --coverage-clover=coverage.xml'
+        coverage:
+          file: 'coverage.xml'
+          format: 'clover'
