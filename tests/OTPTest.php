@@ -123,4 +123,43 @@ class OTPTest extends PHPUnit\Framework\TestCase
 			}
 		} while ($t1 != $t2);
 	}
+
+	public function testGenerateMultipleByCounter()
+	{
+		static $key = '12345678901234567890';
+
+		$expected = [
+			WildWolf\OTP::generateByCounter($key, 0),
+			WildWolf\OTP::generateByCounter($key, 1),
+			WildWolf\OTP::generateByCounter($key, 2),
+			WildWolf\OTP::generateByCounter($key, 3),
+		];
+
+		$actual   = WildWolf\OTP::generateMultipleByCounter($key, 0, 4);
+		$this->assertSame($expected, $actual);
+	}
+
+	public function testGenerateMultipleByCounterNeg()
+	{
+		static $key = '12345678901234567890';
+
+		$expected = [
+			WildWolf\OTP::generateByCounter($key,  0),
+			WildWolf\OTP::generateByCounter($key, -1),
+			WildWolf\OTP::generateByCounter($key, -2),
+			WildWolf\OTP::generateByCounter($key, -3),
+		];
+
+		$actual   = WildWolf\OTP::generateMultipleByCounter($key, 0, -4);
+		$this->assertSame($expected, $actual);
+	}
+
+	public function testGenerateMultipleByCounterZero()
+	{
+		static $key = '12345678901234567890';
+
+		$expected = [];
+		$actual   = WildWolf\OTP::generateMultipleByCounter($key, 0, 0);
+		$this->assertSame($expected, $actual);
+	}
 }

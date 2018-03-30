@@ -24,6 +24,21 @@ abstract class OTP
 		return self::generateByCounter($key, $counter, $algo);
 	}
 
+	public static function generateMultipleByCounter(string $key, int $counter, int $n, string $algo = 'sha1') : array
+	{
+		$result = [];
+		$step   = $n > 0 ? 1 : -1;
+		$n      = \abs($n);
+
+		while ($n) {
+			$result[] = self::generateByCounter($key, $counter, $algo);
+			$counter += $step;
+			--$n;
+		}
+
+		return $result;
+	}
+
 	public static function generateByTimeWindow(string $key, int $window, int $min = -1, int $max = 1, int $tstamp = null, string $algo = 'sha1') : array
 	{
 		if ($tstamp === null) {
