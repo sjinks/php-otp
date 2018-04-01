@@ -112,10 +112,10 @@ class OTPTest extends PHPUnit\Framework\TestCase
 		static $key = '12345678901234567890';
 
 		do {
-			$t1 = time();
+			$t1 = (int)(time() / 30);
 			$r1 = WildWolf\OTP::generateByTime($key, 30);
 			$r2 = WildWolf\OTP::generateByTimeWindow($key, 30, 0, 0);
-			$t2 = time();
+			$t2 = (int)(time() / 30);
 
 			$this->assertEquals(1, count($r2));
 			if ($t1 === $t2) {
