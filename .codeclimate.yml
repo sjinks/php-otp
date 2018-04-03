@@ -1,0 +1,11 @@
+engines:
+  phan:
+    enabled: true
+    config:
+      file_extensions: "php"
+  phpmd:
+    enabled: true
+    config:
+      file_extensions:
+        - php
+      rulesets: "unusedcode,codesize,design,cleancode"
