@@ -20,5 +20,5 @@ before_script:
 script:
   - vendor/bin/phpunit --coverage-clover clover.xml
 
-after_acript:
-  - ./cc-test-reporter after-build --coverage-input-type clover --exit-code $TRAVIS_TEST_RESULT
+after_script:
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --coverage-input-type clover --exit-code $TRAVIS_TEST_RESULT; fi
