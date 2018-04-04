@@ -64,7 +64,7 @@ abstract class OTP
 		}
 
 		$code = $code % $powers[$len];
-		return \str_pad($code, $len, '0', \STR_PAD_LEFT);
+		return \str_pad((string)$code, $len, '0', \STR_PAD_LEFT);
 	}
 
 	private static function getCode(string $hmac) : int
