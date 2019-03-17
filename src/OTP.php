@@ -1,5 +1,4 @@
 <?php
-
 namespace WildWolf;
 
 /**
@@ -57,8 +56,8 @@ abstract class OTP
 
 	public static function asOTP(int $code, int $len) : string
 	{
-	
 		static $powers = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000];
+
 		if ($len < 1 || $len > 8) {
 			throw new \InvalidArgumentException();
 		}
