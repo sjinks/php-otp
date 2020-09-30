@@ -87,18 +87,18 @@ class OTPTest extends PHPUnit\Framework\TestCase
 	}
 
 	/**
-	 * @expectedException \InvalidArgumentException
 	 * @dataProvider asOTPExceptionDataProvider
 	 */
 	public function testAsOTPException($len)
 	{
+		$this->expectException(\InvalidArgumentException::class);
 		WildWolf\OTP::asOTP(0, $len);
 	}
 
 	public function testGenerateByTimeWindow()
 	{
 		static $expected = [
-			 425293533,  942152854, 1576851516, 1289488204, 1663094451,
+			425293533,  942152854, 1576851516, 1289488204, 1663094451,
 			1284755224,
 			1094287082,  137359152, 1726969429, 1640338314,  868254676
 		];

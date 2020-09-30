@@ -1,5 +1,3 @@
-sudo: false
-
 env:
   global:
     - CC_TEST_REPORTER_ID=ae914b4cbac06765df6004cbf2822620491ce4c967b2934dcf98775cf25dc0a1
@@ -15,7 +13,7 @@ php:
   - nightly
 
 before_script:
-  - composer update -a -o
+  - composer install -a -o --ignore-platform-reqs
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
