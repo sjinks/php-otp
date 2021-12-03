@@ -8,7 +8,7 @@ abstract class OTP
 {
 	public static function generateByCounter(string $key, int $counter, string $algo = 'sha1') : int
 	{
-		$counter = pack('J', $counter);
+		$counter = PHP_INT_SIZE === 8 ? pack('J', $counter) : pack('N*', 0, $counter);
 		$hash    = \hash_hmac($algo, $counter, $key, true);
 		return self::getCode($hash);
 	}
