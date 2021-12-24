@@ -37,18 +37,8 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
-      - name: Cache Composer packages
-        uses: actions/cache@v2.1.7
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-            ${{ runner.os }}-php-${{ matrix.php }}
-            ${{ runner.os }}-php-
-
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-interaction
+        uses: ramsey/composer-install@v2
 
       - name: Run tests
         run: vendor/bin/phpunit
