@@ -24,5 +24,11 @@
 	},
 	"scripts": {
 		"test": "phpunit"
+	},
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "7.4"
+		}
 	}
 }
