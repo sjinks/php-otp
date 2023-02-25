@@ -17,10 +17,10 @@ jobs:
       fail-fast: true
       matrix:
         php:
-          - "7.3"
           - "7.4"
           - "8.0"
           - "8.1"
+          - "8.2"
     steps:
       - name: Check out source code
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
@@ -29,13 +29,6 @@ jobs:
         uses: shivammathur/setup-php@d30ad8b1843ace22e6698ab99bbafaa747b6bd0d # 2.24.0
         with:
           php-version: ${{ matrix.php }}
-
-      - name: Get composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Validate composer.json and composer.lock
-        run: composer validate
 
       - name: Install dependencies
         uses: ramsey/composer-install@83af392bf5f031813d25e6fe4cd626cdba9a2df6 # 2.2.0
